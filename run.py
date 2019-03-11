@@ -8,16 +8,21 @@ Routes and views for the flask application.
 
 from datetime import datetime
 
-app = Flask(__name__)
-mail = Mail(app)
+"""define global Mail variable """
+mail = Mail()
 
+app = Flask(__name__)
+
+"""Mail settings"""
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'email@email.com'
-app.config['MAIL_DEFAULT_SENDER'] = 'email@email.com'
-app.config['MAIL_PASSWORD'] = '****'
+app.config['MAIL_USERNAME'] = 'ortiv5@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = 'noreply@seedevelopment.net'
+app.config['MAIL_PASSWORD'] = 'Eastern2'
+
+mail.init_app(app)
 
 @app.route('/')
 @app.route('/home')
@@ -53,10 +58,21 @@ def contact():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def sendMail():
+    if request.method == 'GET':
+        return render_template(
+            'contact.html'
+            )
     if request.method == 'POST':
-        msg = Message(request.form['name'],request.form['email'],request.form['message'])
+        msg = Message(
+            body="Message: {}\nFrom: {}\nEmail: {}".format(
+                request.form['message'], request.form['name'], request.form['email'],
+            ),
+            subject="Contact from {}".format(request.form['name']),
+            recipients=[app.config['MAIL_USERNAME'],'ortivinga@gmail.com'],
+        )
         mail.send(msg)
         return redirect(url_for('home'))
+
 
 
 @app.route('/services')
