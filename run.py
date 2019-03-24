@@ -67,7 +67,7 @@ def sendMail():
             body="Message: {}\nFrom: {}\nEmail: {}".format(
                 request.form['message'], request.form['name'], request.form['email'],
             ),
-            subject="Contact from {}".format(request.form['name']),
+            subject="SeeBot: Contact from {}".format(request.form['name']),
             recipients=[app.config['MAIL_USERNAME'],'ortivinga@gmail.com'],
         )
         mail.send(msg)
