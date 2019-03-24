@@ -79,7 +79,7 @@ def sendMail():
 def services():
     """Render My Work Page"""
     return render_template(
-        'work.html'
+        'services.html'
         )
 
 @app.route('/work')

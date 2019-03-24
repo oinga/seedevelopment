@@ -87,7 +87,7 @@
                                     <div class="slider-text-inner">
                                         <h2>Welcome &amp; Enjoy</h2>
                                         <h1></h1>
-                                        <p><a class="btn btn-primary btn-learn" href="{{ url_for('contact') }}">Contact Us</a></p>
+                                        <p><a class="btn btn-primary btn-learn" href="{{ url_for('contact', _anchor='colorlib-contact') }}">Contact Us</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                     <div class="slider-text-inner">
                                         <h2>Building Site</h2>
                                         <h1>We Build Modern &amp; Functional Websites</h1>
-                                        <p><a class="btn btn-primary btn-learn" href="{{ url_for('contact') }}">Learn More</a></p>
+                                        <p><a class="btn btn-primary btn-learn" href="{{ url_for('work') }}">Learn More</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -406,7 +406,7 @@
                         <div class="col-md-4 col-pb-sm">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h2>Suitcase</h2>
+                                    <h2>See Development</h2>
                                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -472,4 +472,3 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
-
